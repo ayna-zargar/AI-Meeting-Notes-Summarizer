@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
-import { Brain, FileText } from 'lucide-react';
-import { TranscriptUploader } from './components/TranscriptUploader';
-import { PromptSelector } from './components/PromptSelector';
-import { SummaryGenerator } from './components/SummaryGenerator';
-import { SummaryEditor } from './components/SummaryEditor';
-import { EmailSharer } from './components/EmailSharer';
+import React, { useState } from "react";
+import { Brain, FileText } from "lucide-react";
+import { TranscriptUploader } from "./components/TranscriptUploader";
+import { PromptSelector } from "./components/PromptSelector";
+import { SummaryGenerator } from "./components/SummaryGenerator";
+import { SummaryEditor } from "./components/SummaryEditor";
+import { EmailSharer } from "./components/EmailSharer";
 
 function App() {
-  const [transcript, setTranscript] = useState('');
-  const [transcriptFileName, setTranscriptFileName] = useState<string>('');
-  const [prompt, setPrompt] = useState('');
-  const [summary, setSummary] = useState('');
+  const [transcript, setTranscript] = useState("");
+  const [transcriptFileName, setTranscriptFileName] = useState<string>("");
+  const [prompt, setPrompt] = useState("");
+  const [summary, setSummary] = useState("");
   const [isEdited, setIsEdited] = useState(false);
 
   const handleTranscriptChange = (content: string, fileName?: string) => {
     setTranscript(content);
-    setTranscriptFileName(fileName || '');
+    setTranscriptFileName(fileName || "");
     // Reset summary when transcript changes
-    setSummary('');
+    setSummary("");
     setIsEdited(false);
   };
 
@@ -33,7 +33,7 @@ function App() {
 
   const handleEmailSent = () => {
     // Could add success notification or reset form
-    console.log('Email sent successfully!');
+    console.log("Email sent successfully!");
   };
 
   return (
@@ -47,10 +47,11 @@ function App() {
             </div>
             <div>
               <h1 className="text-3xl font-bold text-gray-900">
-                AI Meeting Notes Summarizer
+                Briefly-AI Meeting Notes Summarizer
               </h1>
               <p className="text-gray-600 mt-1">
-                Transform your meeting transcripts into structured, actionable summaries
+                Transform your meeting transcripts into structured, actionable
+                summaries
               </p>
             </div>
           </div>
@@ -70,10 +71,7 @@ function App() {
             </div>
 
             <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-200">
-              <PromptSelector
-                prompt={prompt}
-                onPromptChange={setPrompt}
-              />
+              <PromptSelector prompt={prompt} onPromptChange={setPrompt} />
             </div>
 
             <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-200">
@@ -114,7 +112,8 @@ function App() {
                     Ready to Generate Summary
                   </h3>
                   <p className="text-gray-600">
-                    Upload your meeting transcript and select summary instructions to get started
+                    Upload your meeting transcript and select summary
+                    instructions to get started
                   </p>
                 </div>
               </div>
@@ -127,13 +126,19 @@ function App() {
           <div className="flex items-center justify-between text-sm text-gray-600">
             <div className="flex items-center gap-6">
               <span>
-                Transcript: {transcript ? `${transcript.length} characters` : 'Not uploaded'}
+                Transcript:{" "}
+                {transcript
+                  ? `${transcript.length} characters`
+                  : "Not uploaded"}
               </span>
+              <span>Prompt: {prompt ? "Selected" : "Not selected"}</span>
               <span>
-                Prompt: {prompt ? 'Selected' : 'Not selected'}
-              </span>
-              <span>
-                Summary: {summary ? (isEdited ? 'Generated & Edited' : 'Generated') : 'Not generated'}
+                Summary:{" "}
+                {summary
+                  ? isEdited
+                    ? "Generated & Edited"
+                    : "Generated"
+                  : "Not generated"}
               </span>
             </div>
             <div className="text-xs text-gray-500">
