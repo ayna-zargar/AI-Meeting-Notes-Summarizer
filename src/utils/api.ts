@@ -1,5 +1,5 @@
 export const generateSummary = async (transcript, prompt) => {
-  const response = await fetch("http://localhost:5000/api/summary", {
+  const response = await fetch("https://ai-meeting-notes-summarizer-17qp.onrender.com/api/summary", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ transcript, prompt })

@@ -1,6 +1,6 @@
 // src/utils/emailService.ts
 export async function sendSummaryEmail(payload: any) {
-  const response = await fetch("http://localhost:5000/api/email/send-email", {
+  const response = await fetch("https://ai-meeting-notes-summarizer-17qp.onrender.com/api/email/send-email", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
