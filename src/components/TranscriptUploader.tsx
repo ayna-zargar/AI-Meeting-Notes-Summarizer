@@ -1,17 +1,17 @@
-import React, { useState, useRef } from 'react';
-import { Upload, FileText, X } from 'lucide-react';
+import React, { useState, useRef } from "react";
+import { Upload, FileText, X } from "lucide-react";
 
 interface TranscriptUploaderProps {
   onTranscriptChange: (content: string, fileName?: string) => void;
   transcript: string;
 }
 
-export const TranscriptUploader: React.FC<TranscriptUploaderProps> = ({ 
-  onTranscriptChange, 
-  transcript 
+export const TranscriptUploader: React.FC<TranscriptUploaderProps> = ({
+  onTranscriptChange,
+  transcript,
 }) => {
   const [dragActive, setDragActive] = useState(false);
-  const [uploadedFileName, setUploadedFileName] = useState<string>('');
+  const [uploadedFileName, setUploadedFileName] = useState<string>("");
   const fileInputRef = useRef<HTMLInputElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -29,14 +29,14 @@ export const TranscriptUploader: React.FC<TranscriptUploaderProps> = ({
     e.preventDefault();
     e.stopPropagation();
     setDragActive(false);
-    
+
     if (e.dataTransfer.files && e.dataTransfer.files[0]) {
       handleFile(e.dataTransfer.files[0]);
     }
   };
 
   const handleFile = (file: File) => {
-    if (file.type === 'text/plain' || file.name.endsWith('.txt')) {
+    if (file.type === "text/plain" || file.name.endsWith(".txt")) {
       const reader = new FileReader();
       reader.onload = (e) => {
         const content = e.target?.result as string;
@@ -45,7 +45,7 @@ export const TranscriptUploader: React.FC<TranscriptUploaderProps> = ({
       };
       reader.readAsText(file);
     } else {
-      alert('Please upload a text file (.txt)');
+      alert("Please upload a text file (.txt)");
     }
   };
 
@@ -57,21 +57,23 @@ export const TranscriptUploader: React.FC<TranscriptUploaderProps> = ({
 
   const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     onTranscriptChange(e.target.value);
-    setUploadedFileName('');
+    setUploadedFileName("");
   };
 
   const clearTranscript = () => {
-    onTranscriptChange('');
-    setUploadedFileName('');
+    onTranscriptChange("");
+    setUploadedFileName("");
     if (fileInputRef.current) {
-      fileInputRef.current.value = '';
+      fileInputRef.current.value = "";
     }
   };
 
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-semibold text-gray-900">Meeting Transcript</h2>
+        <h2 className="text-xl font-semibold text-gray-900">
+          Meeting Transcript
+        </h2>
         {transcript && (
           <button
             onClick={clearTranscript}
@@ -82,7 +84,7 @@ export const TranscriptUploader: React.FC<TranscriptUploaderProps> = ({
           </button>
         )}
       </div>
-      
+
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* File Upload */}
         <div className="space-y-2">
@@ -92,8 +94,8 @@ export const TranscriptUploader: React.FC<TranscriptUploaderProps> = ({
           <div
             className={`border-2 border-dashed rounded-lg p-6 text-center transition-colors ${
               dragActive
-                ? 'border-blue-400 bg-blue-50'
-                : 'border-gray-300 hover:border-gray-400'
+                ? "border-blue-400 bg-blue-50"
+                : "border-gray-300 hover:border-gray-400"
             }`}
             onDragEnter={handleDrag}
             onDragLeave={handleDrag}
@@ -140,7 +142,7 @@ export const TranscriptUploader: React.FC<TranscriptUploaderProps> = ({
           />
         </div>
       </div>
-      
+
       {transcript && (
         <div className="bg-gray-50 rounded-lg p-4">
           <p className="text-sm text-gray-600">
