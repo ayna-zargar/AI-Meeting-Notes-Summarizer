@@ -14,7 +14,7 @@ router.post("/send-email", async (req, res) => {
     const toEmails = recipients.map((r) => r.email);
 
     const data = await resend.emails.send({
-      from: "Briefly <onboarding@resend.dev>", // must be verified sender
+      from: process.env.RESEND_SENDER_EMAIL, // must be verified sender
       to: toEmails,
       subject,
       html: `
