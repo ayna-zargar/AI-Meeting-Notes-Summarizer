@@ -9,7 +9,7 @@ Briefly is an AI-powered meeting summarization tool that generates concise summa
 - Generate structured, human-like summaries.
 - Send summaries via **email** using Resend API.
 - Backend built with **Express.js**.
-- Deployed on **Render** for live usage.
+- Deployed on **Render** and **Vercel** for live usage.
 
 ---
 
@@ -81,7 +81,7 @@ http://localhost:5000
 - **Backend**: Node.js, Express.js
 - **AI Model**: Groq LLaMA3-70B
 - **Email**: Resend API
-- **Hosting**: Render
+- **Hosting**: Render/Vercel
 
 ---
 
