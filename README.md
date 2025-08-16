@@ -28,10 +28,10 @@ It also allows sending summaries via **email** with [Resend](https://resend.com)
 
 Clone the repo:
 ```bash
-git clone https://github.com/your-username/briefly.git
+git clone https://github.com/ayna-zargar/AI-Meeting-Notes-Summarizer.git
 Install dependencies:
 
-bash
+```bash
 npm install
 Create a .env file in the root folder:
 
